@@ -2,6 +2,7 @@ import {PadCommand} from "./PadCommand";
 import {DrinkMaker} from "../interfaces/DrinkMaker";
 import {DrinkType} from "./DrinkType";
 import {Sugar} from "./Sugar";
+import {TooManySugarsException} from "./CustomException";
 
 export class Logic {
     private _drinkMaker: DrinkMaker;
@@ -11,10 +12,17 @@ export class Logic {
     }
 
     constructInstruction(padCommand: PadCommand): string {
-        return this.convertDrinkType(padCommand.getDrink()) + this.convertSugarNumber(padCommand.getSugar());
+        try {
+            return this.convertDrinkType(padCommand.getDrink()) + this.convertSugarNumber(padCommand.getSugar());
+        } catch (e) {
+            if (e instanceof TooManySugarsException) {
+                return "M: You can't add more than two sugars !"
+            }
+            return "";
+        }
     }
 
-    convertDrinkType(drinkType: DrinkType | undefined): string {
+    private convertDrinkType(drinkType: DrinkType | undefined): string {
         switch (drinkType) {
             case DrinkType.CHOCOLATE:
                 return "H";
@@ -27,9 +35,13 @@ export class Logic {
         }
     }
 
-    convertSugarNumber(sugars: Sugar): string {
-        if (sugars.requiresStick())
+    private convertSugarNumber(sugars: Sugar): string {
+        if (sugars.hasMoreThanTwoSugars()) {
+            throw new TooManySugarsException("")
+        }
+        if (sugars.requiresStick()) {
             return ":" + sugars.toString() + ":0";
+        }
         return "::";
     }
 }

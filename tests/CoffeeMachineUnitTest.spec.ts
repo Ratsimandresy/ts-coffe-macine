@@ -41,4 +41,14 @@ describe('Given a pad instruction', () => {
 
         expect(instruction).toEqual('C:2:0');
     })
+
+    test('Logic should send appropriate instruction for too many sugars', () => {
+        const padCommand = new PadCommand(DrinkType.COFFEE, 4);
+        const fakeDrinkMaker = new FakeDrinkMaker()
+        const logic = new Logic(fakeDrinkMaker);
+
+        const instruction = logic.constructInstruction(padCommand);
+
+        expect(instruction).toEqual('M: You can\'t add more than two sugars !');
+    })
 });
