@@ -1,6 +1,7 @@
 import {PadCommand} from "./PadCommand";
 import {DrinkMaker} from "../interfaces/DrinkMaker";
 import {DrinkType} from "./DrinkType";
+import {Sugar} from "./Sugar";
 
 export class Logic {
     private _drinkMaker: DrinkMaker;
@@ -10,14 +11,14 @@ export class Logic {
     }
 
     constructInstruction(padCommand: PadCommand): string {
-        return "";
+        return this.convertDrinkType(padCommand.getDrink()) + this.convertSugarNumber(padCommand.getSugar());
     }
 
     convertDrinkType(drinkType: DrinkType): string {
         return "H";
     }
 
-    convertSugarNumber(sugars: number): string {
+    convertSugarNumber(sugars: Sugar): string {
         return "::";
     }
 }

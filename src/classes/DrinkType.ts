@@ -1,3 +1,4 @@
 export enum DrinkType {
-    CHOCOLATE
+    CHOCOLATE,
+    TEA,
 }

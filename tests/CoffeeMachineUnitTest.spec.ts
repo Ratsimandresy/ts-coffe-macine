@@ -2,6 +2,7 @@ import {DrinkType} from "../src/classes/DrinkType";
 import {Logic} from "../src/classes/Logic";
 import {DrinkMaker} from "../src/interfaces/DrinkMaker";
 import {FakeDrinkMaker} from "./CoffeeMachineLogicTest.spec";
+import {Sugar} from "../src/classes/Sugar";
 
 describe('Given a drink type',  () => {
 
@@ -19,7 +20,7 @@ describe('Given a number of sugar', () => {
     test('should return "::" for no sugar', () => {
         const fakeDrinkMaker: DrinkMaker = new FakeDrinkMaker()
         const logic = new Logic(fakeDrinkMaker);
-        let sugars = 0;
+        let sugars = new Sugar(0);
 
         expect(logic.convertSugarNumber(sugars)).toEqual('::')
 

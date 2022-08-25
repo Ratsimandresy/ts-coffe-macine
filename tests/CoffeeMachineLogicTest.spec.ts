@@ -8,8 +8,11 @@ export class FakeDrinkMaker implements DrinkMaker{
     receiveHotChocolateNoSugar(instructions: string): boolean {
         return instructions === 'H::'
     }
-}
 
+    receiveTeaOneSugar(instruction: string): boolean {
+        return instruction === "T:1:0";
+    }
+}
 
 describe('Given a pad instruction', () => {
 
@@ -23,12 +26,13 @@ describe('Given a pad instruction', () => {
         expect(fakeDrinkMaker.receiveHotChocolateNoSugar(instruction)).toBeTruthy()
     })
 
-    /*
-    test('Logic should send the instruction to make 1 tea with 1 sugar and a stick ', () => {
+    test('Logic should send the instruction to make tea with one suger and a stick', () => {
+        const padCommand = new PadCommand(DrinkType.TEA, 1);
+        const fakeDrinkMaker: DrinkMaker = new FakeDrinkMaker()
+        const logic = new Logic(fakeDrinkMaker);
 
-        let padCommand = ;
-        expect(logic.constructInstruction(padCommand)).toEqual("T:1:0")
+        const instruction = logic.constructInstruction(padCommand);
 
-    })*/
-
+        expect(fakeDrinkMaker.receiveTeaOneSugar(instruction)).toBeTruthy()
+    })
 });
