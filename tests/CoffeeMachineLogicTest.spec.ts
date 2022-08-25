@@ -1,12 +1,11 @@
-import {PadCommand} from "../src/PadCommand";
-import {DrinkType} from "../src/DrinkType";
-import {Logic} from "../src/Logic";
+import {PadCommand} from "../src/classes/PadCommand";
+import {DrinkType} from "../src/classes/DrinkType";
+import {Logic} from "../src/classes/Logic";
+import {DrinkMaker} from "../src/interfaces/DrinkMaker";
 
-class FakeDrinkMaker {
-    constructor() {
-    }
+export class FakeDrinkMaker implements DrinkMaker{
 
-    receiveHotChocolateNoSuger(instructions: string): boolean {
+    receiveHotChocolateNoSugar(instructions: string): boolean {
         return instructions === 'H::'
     }
 }
@@ -16,12 +15,12 @@ describe('Given a pad instruction', () => {
 
     test('Logic should send the instruction to make 1 chocolate with no suger and no stick', () => {
         const padCommand = new PadCommand(DrinkType.CHOCOLATE, 0);
-        const logic = new Logic();
-        const fakeDrinkMaker = new FakeDrinkMaker()
+        const fakeDrinkMaker: DrinkMaker = new FakeDrinkMaker()
+        const logic = new Logic(fakeDrinkMaker);
 
         const instruction = logic.constructInstruction(padCommand);
 
-        expect(fakeDrinkMaker.receiveHotChocolateNoSuger(instruction)).toBeTruthy()
+        expect(fakeDrinkMaker.receiveHotChocolateNoSugar(instruction)).toBeTruthy()
     })
 
     /*
