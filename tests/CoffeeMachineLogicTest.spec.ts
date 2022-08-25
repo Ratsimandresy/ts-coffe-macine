@@ -2,15 +2,26 @@ import {PadCommand} from "../src/PadCommand";
 import {DrinkType} from "../src/DrinkType";
 import {Logic} from "../src/Logic";
 
-describe('Given a pad instruction',  () => {
+class FakeDrinkMaker {
+    constructor() {
+    }
+
+    receiveHotChocolateNoSuger(instructions: string): boolean {
+        return instructions === 'H::'
+    }
+}
+
+
+describe('Given a pad instruction', () => {
 
     test('Logic should send the instruction to make 1 chocolate with no suger and no stick', () => {
         const padCommand = new PadCommand(DrinkType.CHOCOLATE, 0);
         const logic = new Logic();
+        const fakeDrinkMaker = new FakeDrinkMaker()
 
         const instruction = logic.constructInstruction(padCommand);
 
-        expect(instruction).toEqual('H::')
+        expect(fakeDrinkMaker.receiveHotChocolateNoSuger(instruction)).toBeTruthy()
     })
 
     /*
