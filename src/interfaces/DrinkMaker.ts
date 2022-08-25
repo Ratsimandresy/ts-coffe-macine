@@ -1,3 +1,3 @@
 export interface DrinkMaker {
-    processInstruction(instruction: string): boolean;
+    processInstruction(instruction: string): void;
 }

@@ -43,7 +43,11 @@ export class Logic {
         return "::";
     }
 
-    SendingInstruction(instruction: string) {
+    sendingInstruction(instruction: string) {
         return this._drinkMaker.processInstruction(instruction);
+    }
+
+    createAndProcessInstruction(padCommand: PadCommand) {
+        return this.sendingInstruction(this.constructInstruction(padCommand));
     }
 }
