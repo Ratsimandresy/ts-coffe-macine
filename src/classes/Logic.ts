@@ -14,7 +14,7 @@ export class Logic {
         return this.convertDrinkType(padCommand.getDrink()) + this.convertSugarNumber(padCommand.getSugar());
     }
 
-    convertDrinkType(drinkType: DrinkType): string {
+    convertDrinkType(drinkType: DrinkType | undefined): string {
         switch (drinkType) {
             case DrinkType.CHOCOLATE:
                 return "H";
@@ -23,7 +23,7 @@ export class Logic {
             case DrinkType.COFFEE:
                 return "C";
             default:
-                return "";
+                return "M: drink type is not valid";
         }
     }
 

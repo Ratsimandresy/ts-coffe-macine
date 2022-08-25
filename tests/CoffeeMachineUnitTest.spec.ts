@@ -29,6 +29,14 @@ describe('Given a drink type',  () => {
 
         expect(logic.convertDrinkType(drinkType)).toEqual('C')
     })
+
+    test('should send a message to the customer when drink is not valid', () => {
+        const drinkType = undefined;
+        const fakeDrinkMaker = new FakeDrinkMaker();
+        const logic = new Logic(fakeDrinkMaker);
+
+        expect(logic.convertDrinkType(drinkType)).toEqual('M: drink type is not valid');
+    })
 });
 
 describe('Given a number of sugar', () => {
