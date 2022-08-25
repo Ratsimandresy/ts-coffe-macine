@@ -25,6 +25,8 @@ export class Logic {
     }
 
     convertSugarNumber(sugars: Sugar): string {
+        if(sugars.requiresStick())
+            return ":" + sugars.toString() + ":0";
         return "::";
     }
 }

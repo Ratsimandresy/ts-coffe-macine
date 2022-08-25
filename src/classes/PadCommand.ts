@@ -5,9 +5,9 @@ export class PadCommand {
     private drink: DrinkType;
     private sugar: Sugar;
 
-    constructor(drink: DrinkType, number: number) {
+    constructor(drink: DrinkType, numberOfSugar: number) {
         this.drink = drink;
-        this.sugar = number;
+        this.sugar = new Sugar(numberOfSugar);
     }
 
     getDrink(): DrinkType {

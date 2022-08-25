@@ -33,4 +33,13 @@ describe('Given a number of sugar', () => {
         expect(logic.convertSugarNumber(sugars)).toEqual('::')
 
     })
+
+    test('should return ":1:0" for one sugar', () => {
+        const fakeDrinkMaker: DrinkMaker = new FakeDrinkMaker()
+        const logic = new Logic(fakeDrinkMaker);
+        let sugars = new Sugar(1);
+
+        expect(logic.convertSugarNumber(sugars)).toEqual(':1:0')
+
+    })
 });
