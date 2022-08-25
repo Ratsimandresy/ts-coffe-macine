@@ -16,4 +16,8 @@ export class Logic {
     convertDrinkType(drinkType: DrinkType): string {
         return "H";
     }
+
+    convertSugarNumber(sugars: number): string {
+        return "::";
+    }
 }
