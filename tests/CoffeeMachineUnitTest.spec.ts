@@ -1,61 +1,44 @@
+import {PadCommand} from "../src/classes/PadCommand";
 import {DrinkType} from "../src/classes/DrinkType";
 import {Logic} from "../src/classes/Logic";
 import {DrinkMaker} from "../src/interfaces/DrinkMaker";
-import {FakeDrinkMaker} from "./CoffeeMachineLogicTest.spec";
-import {Sugar} from "../src/classes/Sugar";
 
-describe('Given a drink type',  () => {
+export class FakeDrinkMaker implements DrinkMaker{
 
-    test('should return H for chocolate', () => {
-        const drinkType = DrinkType.CHOCOLATE;
-        const fakeDrinkMaker: DrinkMaker = new FakeDrinkMaker()
+    processInstruction(instruction: string): boolean {
+        return false;
+    }
+}
+
+describe('Given a pad instruction', () => {
+
+    test('Logic should send the instruction to make 1 chocolate with no suger and no stick', () => {
+        const padCommand = new PadCommand(DrinkType.CHOCOLATE, 0);
+        const fakeDrinkMaker = new FakeDrinkMaker()
         const logic = new Logic(fakeDrinkMaker);
 
-        expect(logic.convertDrinkType(drinkType)).toEqual('H')
+        const instruction = logic.constructInstruction(padCommand);
+
+        expect(instruction).toEqual('H::');
     })
 
-    test('should return T for Tea', () => {
-        const drinkType = DrinkType.TEA;
-        const fakeDrinkMaker: DrinkMaker = new FakeDrinkMaker()
+    test('Logic should send the instruction to make tea with one sugar and a stick', () => {
+        const padCommand = new PadCommand(DrinkType.TEA, 1);
+        const fakeDrinkMaker = new FakeDrinkMaker()
         const logic = new Logic(fakeDrinkMaker);
 
-        expect(logic.convertDrinkType(drinkType)).toEqual('T')
+        const instruction = logic.constructInstruction(padCommand);
+
+        expect(instruction).toEqual('T:1:0')
     })
 
-    test('should return C for Coffee', () => {
-        const drinkType = DrinkType.COFFEE;
-        const fakeDrinkMaker: DrinkMaker = new FakeDrinkMaker()
+    test('Logic should send the instruction to make coffee with two sugars and a stick', () => {
+        const padCommand = new PadCommand(DrinkType.COFFEE, 2);
+        const fakeDrinkMaker = new FakeDrinkMaker()
         const logic = new Logic(fakeDrinkMaker);
 
-        expect(logic.convertDrinkType(drinkType)).toEqual('C')
-    })
+        const instruction = logic.constructInstruction(padCommand);
 
-    test('should send a message to the customer when drink is not valid', () => {
-        const drinkType = undefined;
-        const fakeDrinkMaker = new FakeDrinkMaker();
-        const logic = new Logic(fakeDrinkMaker);
-
-        expect(logic.convertDrinkType(drinkType)).toEqual('M: drink type is not valid');
-    })
-});
-
-describe('Given a number of sugar', () => {
-
-    test('should return "::" for no sugar', () => {
-        const fakeDrinkMaker: DrinkMaker = new FakeDrinkMaker()
-        const logic = new Logic(fakeDrinkMaker);
-        let sugars = new Sugar(0);
-
-        expect(logic.convertSugarNumber(sugars)).toEqual('::')
-
-    })
-
-    test('should return ":1:0" for one sugar', () => {
-        const fakeDrinkMaker: DrinkMaker = new FakeDrinkMaker()
-        const logic = new Logic(fakeDrinkMaker);
-        let sugars = new Sugar(1);
-
-        expect(logic.convertSugarNumber(sugars)).toEqual(':1:0')
-
+        expect(instruction).toEqual('C:2:0');
     })
 });
