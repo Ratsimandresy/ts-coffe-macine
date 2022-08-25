@@ -15,7 +15,13 @@ export class Logic {
     }
 
     convertDrinkType(drinkType: DrinkType): string {
-        return "H";
+        switch (drinkType)
+        {
+            case DrinkType.CHOCOLATE:
+                return "H";
+            case DrinkType.TEA:
+                return "T";
+        }
     }
 
     convertSugarNumber(sugars: Sugar): string {

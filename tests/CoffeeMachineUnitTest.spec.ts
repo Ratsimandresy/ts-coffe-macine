@@ -13,6 +13,14 @@ describe('Given a drink type',  () => {
 
         expect(logic.convertDrinkType(drinkType)).toEqual('H')
     })
+
+    test('should return T for Tea', () => {
+        const drinkType = DrinkType.TEA;
+        const fakeDrinkMaker: DrinkMaker = new FakeDrinkMaker()
+        const logic = new Logic(fakeDrinkMaker);
+
+        expect(logic.convertDrinkType(drinkType)).toEqual('T')
+    })
 });
 
 describe('Given a number of sugar', () => {
