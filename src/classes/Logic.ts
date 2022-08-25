@@ -15,17 +15,20 @@ export class Logic {
     }
 
     convertDrinkType(drinkType: DrinkType): string {
-        switch (drinkType)
-        {
+        switch (drinkType) {
             case DrinkType.CHOCOLATE:
                 return "H";
             case DrinkType.TEA:
                 return "T";
+            case DrinkType.COFFEE:
+                return "C";
+            default:
+                return "";
         }
     }
 
     convertSugarNumber(sugars: Sugar): string {
-        if(sugars.requiresStick())
+        if (sugars.requiresStick())
             return ":" + sugars.toString() + ":0";
         return "::";
     }

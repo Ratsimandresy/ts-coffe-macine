@@ -1,6 +1,6 @@
 export class Sugar {
 
-    private numberOfSugar : number
+    private readonly numberOfSugar : number
 
     constructor(numberOfSugar: number) {
         this.numberOfSugar = numberOfSugar;
