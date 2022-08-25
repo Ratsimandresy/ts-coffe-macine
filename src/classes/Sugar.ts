@@ -1,6 +1,6 @@
 export class Sugar {
 
-    private readonly numberOfSugar : number
+    private readonly numberOfSugar: number
 
     constructor(numberOfSugar: number) {
         this.numberOfSugar = numberOfSugar;
@@ -10,7 +10,7 @@ export class Sugar {
         return this.numberOfSugar !== 0;
     }
 
-    toString() : string{
+    toString(): string {
         return this.numberOfSugar.toString();
     }
 }
