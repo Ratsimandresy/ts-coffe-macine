@@ -6,7 +6,7 @@ import {DrinkMaker} from "../src/interfaces/DrinkMaker";
 export class FakeDrinkMaker implements DrinkMaker{
 
     processInstruction(instruction: string): boolean {
-        return false;
+        return true;
     }
 }
 
@@ -50,5 +50,13 @@ describe('Given a pad instruction', () => {
         const instruction = logic.constructInstruction(padCommand);
 
         expect(instruction).toEqual('M: You can\'t add more than two sugars !');
+    })
+
+    test('Logic should send instruction to drink maker', () => {
+        const fakeDrinkMaker = new FakeDrinkMaker()
+        const logic = new Logic(fakeDrinkMaker);
+        const instruction = "C:2:0";
+
+        expect(logic.SendingInstruction(instruction)).toBeTruthy();
     })
 });

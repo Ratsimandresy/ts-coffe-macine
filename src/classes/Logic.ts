@@ -22,7 +22,7 @@ export class Logic {
         }
     }
 
-    private convertDrinkType(drinkType: DrinkType | undefined): string {
+    convertDrinkType(drinkType: DrinkType): string {
         switch (drinkType) {
             case DrinkType.CHOCOLATE:
                 return "H";
@@ -30,12 +30,10 @@ export class Logic {
                 return "T";
             case DrinkType.COFFEE:
                 return "C";
-            default:
-                return "M: drink type is not valid";
         }
     }
 
-    private convertSugarNumber(sugars: Sugar): string {
+    convertSugarNumber(sugars: Sugar): string {
         if (sugars.hasMoreThanTwoSugars()) {
             throw new TooManySugarsException("")
         }
@@ -43,5 +41,9 @@ export class Logic {
             return ":" + sugars.toString() + ":0";
         }
         return "::";
+    }
+
+    SendingInstruction(instruction: string) {
+        return this._drinkMaker.processInstruction(instruction);
     }
 }
