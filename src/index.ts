@@ -1,7 +1,10 @@
-import {FakeDrinkMaker} from "../tests/CoffeeMachineLogicTest.spec";
+import {drinksPrices} from "./classes/PriceOfDrink";
+import {DrinkType} from "./classes/DrinkType";
 
-console.log('working');
+for (let key  of drinksPrices) {
+    console.log(key)
+}
 
-const dm = new FakeDrinkMaker();
+console.log(DrinkType['CHOCOLATE']);
+console.log(DrinkType['TEA']);
 
-console.log(dm.printHello("hello world!"));

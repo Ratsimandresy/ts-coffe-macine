@@ -1,7 +1,6 @@
 export class Tunasse {
-    private readonly tunasse: number;
 
-    constructor(tunasse: number) {
+    constructor(private readonly tunasse: number) {
         this.tunasse = tunasse;
     }
 
