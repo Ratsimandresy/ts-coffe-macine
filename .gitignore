@@ -9,4 +9,6 @@ build
 tests_build
 coverage
 
+note.txt
+
 .DS_Store

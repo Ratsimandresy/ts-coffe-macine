@@ -18,7 +18,7 @@ export class Logic {
             if (e instanceof TooManySugarsException) {
                 return "M: You can't add more than two sugars !"
             }
-            return "";
+            return "M: Exception not handled.";
         }
     }
 
@@ -32,7 +32,6 @@ export class Logic {
                 return "C";
         }
     }
-
     convertSugarNumber(sugars: Sugar): string {
         if (sugars.hasMoreThanTwoSugars()) {
             throw new TooManySugarsException("")
@@ -47,7 +46,7 @@ export class Logic {
         return this._drinkMaker.processInstruction(instruction);
     }
 
-    createAndProcessInstruction(padCommand: PadCommand) {
+    communicateDrinkMakerInstructionFromPadCommand(padCommand: PadCommand) {
         return this.sendingInstruction(this.constructInstruction(padCommand));
     }
 }

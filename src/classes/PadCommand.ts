@@ -1,13 +1,16 @@
 import {DrinkType} from "./DrinkType";
 import {Sugar} from "./Sugar";
+import { Tunasse } from "./Tunasse";
 
 export class PadCommand {
     private readonly drink: DrinkType;
     private readonly sugar: Sugar;
+    private readonly tunasse: Tunasse;
 
-    constructor(drink: DrinkType, numberOfSugar: number) {
+    constructor(drink: DrinkType, numberOfSugar: number, tunasse: Tunasse = new Tunasse(0)) {
         this.drink = drink;
         this.sugar = new Sugar(numberOfSugar);
+        this.tunasse =  tunasse;
     }
 
     getDrink(): DrinkType {
