@@ -16,7 +16,6 @@ export class Logic {
             let difference = padCommand.verifyAmount(padCommand.displayTunasseProvided())
             return `M: you need to provide ${difference} extra euro !`
         }
-
         try {
             return this.convertDrinkType(padCommand.getDrink()) + this.convertSugarNumber(padCommand.getSugar());
         } catch (e) {
@@ -56,4 +55,6 @@ export class Logic {
     communicateDrinkMakerInstructionFromPadCommand(padCommand: PadCommand) {
         return this.sendingInstruction(this.constructInstruction(padCommand));
     }
+
+    //to do class Verification
 }

@@ -50,12 +50,12 @@ describe('Given a pad instruction', () => {
     })
 
     test('Logic should NOT send instruction if not enough money is provided and the message should contains at least the amount of money missing', () => {
-        const tunasse = new Tunasse(0.4);
-        const padCommand = new PadCommand(DrinkType.COFFEE, 1, tunasse);
+        const tunasse = new Tunasse(0.3);
+        const padCommand = new PadCommand(DrinkType.TEA, 1, tunasse);
 
         logic.communicateDrinkMakerInstructionFromPadCommand(padCommand);
 
-        expect(fakeDrinkMaker.instruction).toEqual("M: you need to provide 0.2 extra euro !");
+        expect(fakeDrinkMaker.instruction).toEqual("M: you need to provide 0.1 extra euro !");
     })
 
     test('Should send instruction if the correct amount of money is provided', () => {
