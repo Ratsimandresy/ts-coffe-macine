@@ -7,6 +7,7 @@ describe("Given_a_drink_order", () => {
         let priceVerification = new PriceVerification();
         let drinkType = DrinkType.CHOCOLATE;
         let tunasse = new Tunasse(0.5);
-        expect(priceVerification.verify(drinkType, tunasse)).toEqual(true)
+
+        expect(priceVerification.verify(drinkType, tunasse)).toEqual(true);
     })
 })

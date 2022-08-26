@@ -7,6 +7,6 @@ export class PriceVerification {
     }
 
     verify(drinkType: DrinkType, tunasse: Tunasse) :boolean {
-        return true;
+        return drinkType.valueOf() == DrinkType.CHOCOLATE && tunasse.displayValue() === 0.5;
     }
 }
