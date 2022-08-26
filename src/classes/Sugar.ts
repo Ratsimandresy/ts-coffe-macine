@@ -1,9 +1,6 @@
 export class Sugar {
 
-    private readonly numberOfSugar: number
-
-    constructor(numberOfSugar: number) {
-        this.numberOfSugar = numberOfSugar;
+    constructor(private  readonly numberOfSugar: number) {
     }
 
     requiresStick() {

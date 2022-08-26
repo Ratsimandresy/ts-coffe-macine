@@ -1,4 +1,6 @@
 import {DrinkType} from "./DrinkType";
+import {Sugar} from "./Sugar";
+import {TooManySugarsException} from "./CustomException";
 
 export class DrinkTranslator {
 
@@ -16,5 +18,15 @@ export class DrinkTranslator {
             case DrinkType.ORANGE:
                 return "O";
         }
+    }
+
+    public translateSugar(sugar: Sugar): string {
+        if (sugar.hasMoreThanTwoSugars()) {
+            throw new TooManySugarsException("")
+        }
+        if (sugar.requiresStick()) {
+            return ":" + sugar.toString() + ":0";
+        }
+        return "::";
     }
 }

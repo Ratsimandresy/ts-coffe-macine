@@ -32,14 +32,9 @@ export class Logic {
         return this.drinkTranslator.translateDrink(drinkType);
     }
 
-    convertSugarNumber(sugars: Sugar): string {
-        if (sugars.hasMoreThanTwoSugars()) {
-            throw new TooManySugarsException("")
-        }
-        if (sugars.requiresStick()) {
-            return ":" + sugars.toString() + ":0";
-        }
-        return "::";
+    convertSugarNumber(sugar: Sugar): string {
+        return this.drinkTranslator.translateSugar(sugar);
+
     }
 
     sendingInstruction(instruction: string) {

@@ -2,7 +2,6 @@ import {DrinkType} from "./DrinkType";
 import {Tunasse} from "./Tunasse";
 import {drinksPrices} from "./PriceOfDrink";
 
-// noinspection LoopStatementThatDoesntLoopJS
 export class PriceVerification {
 
     constructor() {

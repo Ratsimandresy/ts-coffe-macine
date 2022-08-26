@@ -14,7 +14,7 @@ export class PadCommand {
     }
 
     getDrink(): DrinkType {
-        return this.drink;
+        return this.drink.valueOf();
     }
 
     getSugar(): Sugar {
