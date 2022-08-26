@@ -3,6 +3,7 @@ import {DrinkType} from "../src/classes/DrinkType";
 import {Tunasse} from "../src/classes/Tunasse";
 import {FakeDrinkMaker} from "./CoffeeMachineLogicTest.spec";
 import {Logic} from "../src/classes/Logic";
+import {DrinkTranslator} from "../src/classes/DrinkTranslator";
 
 describe('Given an amount of money', () => {
 
@@ -28,7 +29,8 @@ describe('Given an amount of money', () => {
         const tunasse = new Tunasse(0.2);
         const padCommand = new PadCommand(DrinkType.COFFEE, 2, tunasse);
         const fakeDrinkMaker = new FakeDrinkMaker('');
-        const logic = new Logic(fakeDrinkMaker)
+        let drinkTranslator = new DrinkTranslator();
+        const logic = new Logic(fakeDrinkMaker, drinkTranslator)
 
         logic.communicateDrinkMakerInstructionFromPadCommand(padCommand)
 

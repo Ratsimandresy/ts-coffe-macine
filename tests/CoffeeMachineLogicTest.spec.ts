@@ -3,6 +3,7 @@ import {DrinkType} from "../src/classes/DrinkType";
 import {Logic} from "../src/classes/Logic";
 import {DrinkMaker} from "../src/interfaces/DrinkMaker";
 import {Tunasse} from "../src/classes/Tunasse";
+import {DrinkTranslator} from "../src/classes/DrinkTranslator";
 
 export class FakeDrinkMaker implements DrinkMaker{
 
@@ -20,7 +21,8 @@ export class FakeDrinkMaker implements DrinkMaker{
 describe('Given a pad instruction', () => {
 
     const fakeDrinkMaker = new FakeDrinkMaker("")
-    const logic = new Logic(fakeDrinkMaker);
+    const drinkTranslator = new DrinkTranslator();
+    const logic = new Logic(fakeDrinkMaker, drinkTranslator);
 
     test('Logic should send the instruction to make 1 chocolate with no suger and no stick', () => {
         const tunasse = new Tunasse(0.5);

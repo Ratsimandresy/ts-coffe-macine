@@ -3,11 +3,12 @@ import {DrinkMaker} from "../interfaces/DrinkMaker";
 import {DrinkType} from "./DrinkType";
 import {Sugar} from "./Sugar";
 import {TooManySugarsException} from "./CustomException";
+import {DrinkTranslator} from "./DrinkTranslator";
 
 export class Logic {
     private _drinkMaker: DrinkMaker;
 
-    constructor(drinkMaker: DrinkMaker) {
+    constructor(drinkMaker: DrinkMaker, private readonly drinkTranslator: DrinkTranslator) {
         this._drinkMaker = drinkMaker;
     }
 
@@ -28,14 +29,7 @@ export class Logic {
     }
 
     convertDrinkType(drinkType: DrinkType): string {
-        switch (drinkType) {
-            case DrinkType.CHOCOLATE:
-                return "H";
-            case DrinkType.TEA:
-                return "T";
-            case DrinkType.COFFEE:
-                return "C";
-        }
+        return this.drinkTranslator.translateDrink(drinkType);
     }
 
     convertSugarNumber(sugars: Sugar): string {
