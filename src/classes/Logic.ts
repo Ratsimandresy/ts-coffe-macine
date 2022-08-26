@@ -3,6 +3,7 @@ import {DrinkMaker} from "../interfaces/DrinkMaker";
 import {DrinkType} from "./DrinkType";
 import {Sugar} from "./Sugar";
 import {TooManySugarsException} from "./CustomException";
+import {Tunasse} from "./Tunasse";
 
 export class Logic {
     private _drinkMaker: DrinkMaker;
@@ -12,6 +13,9 @@ export class Logic {
     }
 
     constructInstruction(padCommand: PadCommand): string {
+        if (padCommand.getTunasse() != new Tunasse(0)){
+            return "M: you need to provide 0.2 extra euro !"
+        }
         try {
             return this.convertDrinkType(padCommand.getDrink()) + this.convertSugarNumber(padCommand.getSugar());
         } catch (e) {

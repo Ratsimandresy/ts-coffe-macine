@@ -1,5 +1,5 @@
 export enum DrinkType {
-    CHOCOLATE = "H",
-    TEA = "T",
-    COFFEE = "C"
+    CHOCOLATE = 0.5,
+    TEA = 0.4,
+    COFFEE = 0.6,
 }

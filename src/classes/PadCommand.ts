@@ -20,4 +20,8 @@ export class PadCommand {
     getSugar(): Sugar {
         return this.sugar;
     }
+
+    getTunasse(): Tunasse {
+        return this.tunasse;
+    }
 }
