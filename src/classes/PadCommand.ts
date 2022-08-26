@@ -5,12 +5,12 @@ import { Tunasse } from "./Tunasse";
 export class PadCommand {
     private readonly drink: DrinkType;
     private readonly sugar: Sugar;
-    private readonly tunasse: Tunasse;
+    private readonly _tunasse: Tunasse;
 
-    constructor(drink: DrinkType, numberOfSugar: number, tunasse: Tunasse = new Tunasse(0)) {
+    constructor(drink: DrinkType, numberOfSugar: number, tunasse: number) {
         this.drink = drink;
         this.sugar = new Sugar(numberOfSugar);
-        this.tunasse =  tunasse;
+        this._tunasse =  new Tunasse(tunasse);
     }
 
     getDrink(): DrinkType {
@@ -22,7 +22,7 @@ export class PadCommand {
     }
 
     displayTunasseProvided(): number {
-        return this.tunasse.displayValue();
+        return this._tunasse.displayValue();
     }
 
     verifyAmount(tunasse: number) : number {

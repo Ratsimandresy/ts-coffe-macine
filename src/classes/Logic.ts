@@ -4,19 +4,19 @@ import {DrinkType} from "./DrinkType";
 import {Sugar} from "./Sugar";
 import {TooManySugarsException} from "./CustomException";
 import {DrinkTranslator} from "./DrinkTranslator";
+import {MessageHandler} from "./MessageHandler";
 
 export class Logic {
-    private _drinkMaker: DrinkMaker;
 
-    constructor(drinkMaker: DrinkMaker, private readonly drinkTranslator: DrinkTranslator) {
-        this._drinkMaker = drinkMaker;
+    constructor(
+        private readonly drinkMaker: DrinkMaker,
+        private readonly drinkTranslator: DrinkTranslator,
+        private readonly messageHandler: MessageHandler) {
     }
 
     constructInstruction(padCommand: PadCommand): string {
-        if (padCommand.displayTunasseProvided() < padCommand.getDrink().valueOf()) {
-            let difference = padCommand.verifyAmount(padCommand.displayTunasseProvided())
-            return `M: you need to provide ${difference} extra euro !`
-        }
+        this.messageHandler.sendMessageWhenNotEnoughMoney(padCommand);
+
         try {
             return this.convertDrinkType(padCommand.getDrink()) + this.convertSugarNumber(padCommand.getSugar());
         } catch (e) {
@@ -38,7 +38,7 @@ export class Logic {
     }
 
     sendingInstruction(instruction: string) {
-        return this._drinkMaker.processInstruction(instruction);
+        return this.drinkMaker.processInstruction(instruction);
     }
 
     communicateDrinkMakerInstructionFromPadCommand(padCommand: PadCommand) {
