@@ -12,8 +12,9 @@ export class Logic {
     }
 
     constructInstruction(padCommand: PadCommand): string {
-        if (padCommand.getTunasse().tunasse < padCommand.getDrink().valueOf()){
-            return "M: you need to provide 0.2 extra euro !"
+        if (padCommand.getTunasse().tunasse < padCommand.getDrink().valueOf()) {
+            let difference = padCommand.verifyAmount(padCommand.getTunasse().tunasse)
+            return `M: you need to provide ${difference} extra euro !`
         }
 
         try {
@@ -37,6 +38,7 @@ export class Logic {
                 return "C";
         }
     }
+
     convertSugarNumber(sugars: Sugar): string {
         if (sugars.hasMoreThanTwoSugars()) {
             throw new TooManySugarsException("")
