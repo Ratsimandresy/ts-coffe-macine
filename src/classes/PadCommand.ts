@@ -24,4 +24,8 @@ export class PadCommand {
     getTunasse(): Tunasse {
         return this.tunasse;
     }
+
+    verifyAmount(tunasse: number) : number {
+        return (Math.round((this.getDrink().valueOf() - tunasse)*100)/100);
+    }
 }
