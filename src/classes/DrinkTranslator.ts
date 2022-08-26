@@ -13,7 +13,8 @@ export class DrinkTranslator {
                 return "T";
             case DrinkType.COFFEE:
                 return "C";
+            case DrinkType.ORANGE:
+                return "O";
         }
     }
-
 }

@@ -67,4 +67,12 @@ describe('Given a pad instruction', () => {
 
         expect(fakeDrinkMaker.instruction).toEqual("C:1:0");
     })
+
+    test('Should send instruction to make orange juicer if the correct amount of money is provided', () => {
+        const tunasse = new Tunasse(0.6);
+        const padCommand = new PadCommand(DrinkType.ORANGE, 0, tunasse);
+        logic.communicateDrinkMakerInstructionFromPadCommand(padCommand);
+
+        expect(fakeDrinkMaker.instruction).toEqual("O::");
+    })
 });
