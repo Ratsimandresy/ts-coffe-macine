@@ -12,8 +12,8 @@ export class Logic {
     }
 
     constructInstruction(padCommand: PadCommand): string {
-        if (padCommand.getTunasse().tunasse < padCommand.getDrink().valueOf()) {
-            let difference = padCommand.verifyAmount(padCommand.getTunasse().tunasse)
+        if (padCommand.displayTunasseProvided() < padCommand.getDrink().valueOf()) {
+            let difference = padCommand.verifyAmount(padCommand.displayTunasseProvided())
             return `M: you need to provide ${difference} extra euro !`
         }
 

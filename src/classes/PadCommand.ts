@@ -21,8 +21,8 @@ export class PadCommand {
         return this.sugar;
     }
 
-    getTunasse(): Tunasse {
-        return this.tunasse;
+    displayTunasseProvided(): number {
+        return this.tunasse.displayValue();
     }
 
     verifyAmount(tunasse: number) : number {

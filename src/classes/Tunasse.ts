@@ -1,6 +1,11 @@
 export class Tunasse {
-    tunasse: number;
+    private readonly tunasse: number;
+
     constructor(tunasse: number) {
         this.tunasse = tunasse;
+    }
+
+    displayValue() {
+        return this.tunasse;
     }
 }

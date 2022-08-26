@@ -10,7 +10,7 @@ describe('Given an amount of money', () => {
         const tunasse = new Tunasse(0.2);
         const padCommand = new PadCommand(DrinkType.COFFEE, 2, tunasse);
 
-        const actual = padCommand.verifyAmount(padCommand.getTunasse().tunasse);
+        const actual = padCommand.verifyAmount(padCommand.displayTunasseProvided());
 
         expect(actual).toEqual(0.4);
     })
@@ -19,7 +19,7 @@ describe('Given an amount of money', () => {
         const tunasse = new Tunasse(0);
         const padCommand = new PadCommand(DrinkType.COFFEE, 2, tunasse);
 
-        const actual = padCommand.verifyAmount(padCommand.getTunasse().tunasse);
+        const actual = padCommand.verifyAmount(padCommand.displayTunasseProvided());
 
         expect(actual).toEqual(0.6);
     })
