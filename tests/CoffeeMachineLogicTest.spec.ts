@@ -23,7 +23,8 @@ describe('Given a pad instruction', () => {
     const logic = new Logic(fakeDrinkMaker);
 
     test('Logic should send the instruction to make 1 chocolate with no suger and no stick', () => {
-        const padCommand = new PadCommand(DrinkType.CHOCOLATE, 0);
+        const tunasse = new Tunasse(0.5);
+        const padCommand = new PadCommand(DrinkType.CHOCOLATE, 0, tunasse);
 
         logic.communicateDrinkMakerInstructionFromPadCommand(padCommand);
 
@@ -31,7 +32,8 @@ describe('Given a pad instruction', () => {
     })
 
     test('Logic should send the instruction to make tea with one sugar and a stick', () => {
-        const padCommand = new PadCommand(DrinkType.TEA, 1);
+        const tunasse = new Tunasse(0.4);
+        const padCommand = new PadCommand(DrinkType.TEA, 1, tunasse);
 
         logic.communicateDrinkMakerInstructionFromPadCommand(padCommand);
 
@@ -39,7 +41,8 @@ describe('Given a pad instruction', () => {
     })
 
     test('Logic should send the instruction to make coffee with two sugars and a stick', () => {
-        const padCommand = new PadCommand(DrinkType.COFFEE, 2);
+        const tunasse = new Tunasse(0.6);
+        const padCommand = new PadCommand(DrinkType.COFFEE, 2, tunasse);
 
         logic.communicateDrinkMakerInstructionFromPadCommand(padCommand);
 
@@ -53,5 +56,13 @@ describe('Given a pad instruction', () => {
         logic.communicateDrinkMakerInstructionFromPadCommand(padCommand);
 
         expect(fakeDrinkMaker.instruction).toEqual("M: you need to provide 0.2 extra euro !");
+    })
+
+    test('Should send instruction if the correct amount of money is provided', () => {
+        const tunasse = new Tunasse(0.6);
+        const padCommand = new PadCommand(DrinkType.COFFEE, 1, tunasse);
+        logic.communicateDrinkMakerInstructionFromPadCommand(padCommand);
+
+        expect(fakeDrinkMaker.instruction).toEqual("C:1:0");
     })
 });
